@@ -70,7 +70,7 @@ result.append(resultDICT['普通'])
 result.append(resultDICT['負評'])
 
 color = ['#28ff28', '#ffff37', '#5b00ae']
-plt.figure(figsize=(12,8))
+plt.figure(figsize=(10,6))
 separeted = (0, 0, 0.3)
 pictures,category_text,percent_text = plt.pie(
         result,                           
@@ -95,7 +95,7 @@ answer.append(answerDICT['箭頭'])
 answer.append(answerDICT['噓'])
 
 color = ['#28ff28', '#ffff37', '#5b00ae']
-plt.figure(figsize=(12,8))
+plt.figure(figsize=(10,6))
 separeted = (0, 0, 0.3)
 pictures,category_text,percent_text = plt.pie(
         answer,                           
