@@ -4,7 +4,7 @@ from bs4 import BeautifulSoup
 
 url = 'https://www.ptt.cc/bbs/movie/index.html'
 resultDICT = {'好評':0, '普通':0, '負評':0}
-answerDICT = {'推':0, '箭頭':0, '噓':0}
+finalLIST = []
 count = 0
 find_name = '神力女超人'
 
@@ -32,7 +32,8 @@ for i in range(50): #往上爬3頁
 							resultDICT['普通']+=1
 
 				###
-				if is_find:
+				if is_find:				
+					answerDICT = {'文章':0, '推':0, '箭頭':0, '噓':0}
 					href = "https://www.ptt.cc" + title.select_one("a").get("href")
 					response_2 = requests.get(href)
 					if response_2.status_code == requests.codes.ok:
@@ -52,6 +53,7 @@ for i in range(50): #往上爬3頁
 									answerDICT['箭頭'] += 1
 								elif push_tag == '噓 ':
 									answerDICT['噓'] += 1
+					finalLIST.append(answerDICT)
 						#print(userid)
 					#print(href)
 					
@@ -63,4 +65,5 @@ for i in range(50): #往上爬3頁
 		print('request error')
 
 print(resultDICT)
-print(answerDICT)
+for i in finalLIST:
+	print(i)
