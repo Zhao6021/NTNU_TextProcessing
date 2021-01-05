@@ -17,8 +17,10 @@ for i in range(50): #往上爬3頁
 		for title in titles:
 			is_find = False
 			a_title = title.select_one("a")
-			if a_title:
+			if a_title:				
+				answerDICT = {'文章':, '推':0, '箭頭':0, '噓':0}
 				name = a_title.getText()
+				answerDICT['文章'] = name
 				resultLIST=re.findall(r"(?<=\[).+?(?=\])",name)
 				if '影評' in resultLIST or all([label.find('雷')!=-1 for label in resultLIST]):
 					count+=1
@@ -33,7 +35,6 @@ for i in range(50): #往上爬3頁
 
 				###
 				if is_find:				
-					answerDICT = {'文章':0, '推':0, '箭頭':0, '噓':0}
 					href = "https://www.ptt.cc" + title.select_one("a").get("href")
 					response_2 = requests.get(href)
 					if response_2.status_code == requests.codes.ok:
