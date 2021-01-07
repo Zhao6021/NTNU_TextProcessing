@@ -18,7 +18,7 @@ for i in range(50): #往上爬3頁
 			is_find = False
 			a_title = title.select_one("a")
 			if a_title:				
-				answerDICT = {'文章':, '推':0, '箭頭':0, '噓':0}
+				answerDICT = {'文章':'', '推':0, '箭頭':0, '噓':0}
 				name = a_title.getText()
 				answerDICT['文章'] = name
 				resultLIST=re.findall(r"(?<=\[).+?(?=\])",name)
